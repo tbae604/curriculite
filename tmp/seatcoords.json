@@ -1,0 +1,10 @@
+{"seatCoords": [
+  {"seatName": "seat003",
+    "coordLeft": 120,
+    "coordTop": 400
+  },
+  {"seatName": "seat003",
+    "coordLeft": 400,
+    "coordTop": 400
+  }
+]}
