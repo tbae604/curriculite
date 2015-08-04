@@ -1,0 +1,12 @@
+{"sessions": [
+  { "id": 1,
+    "name": "Intro to Design",
+    "xpos": 50,
+    "ypos": 50
+  },
+  { "id": 2,
+    "name": "What are Requirements",
+    "xpos": 150,
+    "ypos": 50
+  }
+]}

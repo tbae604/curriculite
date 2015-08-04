@@ -1,0 +1,40 @@
+html, body {
+    background: #000;
+}
+
+.messages {
+  color: #fff;
+}
+
+
+.session {
+    background: #0099ff;
+    color: #fff;
+    font-weight: bold;
+    width: 150px;
+    height: 100px;
+    padding: 10px 10px;
+    position: absolute;
+}
+
+.session-id {
+  display: none;
+}
+
+.session-delete {
+    float: right;
+    margin-right: 5px;
+    cursor: pointer; cursor: hand;
+}
+
+.area {
+    background: #666;
+    width: 800px;
+    height: 600px;
+    margin: 50px 50px;
+    position: relative;
+}
+
+.save-changes {
+
+}
