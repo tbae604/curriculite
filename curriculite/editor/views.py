@@ -37,9 +37,12 @@ def _get_sessions(request):
 def _add_session(request):
     """
     Accepts new Session from client, posts to db, and returns next view url
-    !!!
     """
-    return HttpRespone('test')
+    name = json.loads(request.body)['name']
+    new = Session(name=name, xpos=0, ypos=0)
+    new.save()
+    messages.add_message(request, messages.INFO, 'New session added.')
+    return JsonResponse({'url': reverse('editor:index')})
 
 
 # @csrf_protect

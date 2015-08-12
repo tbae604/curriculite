@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     # AJAX/JQuery helpers
     # /editor/ajax/_get_sessions
     url(r'^ajax/_get_sessions$', views._get_sessions, name='_get_sessions'),
+    # /editor/ajax/_add_session
+    url(r'^ajax/_add_session$', views._add_session, name='_add_session'),
     # /editor/ajax/_post_sessions
     url(r'^ajax/_post_sessions$', views._post_sessions, name='_post_sessions'),
     # /editor/ajax/_delete_session

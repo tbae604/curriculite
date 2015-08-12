@@ -1,10 +1,6 @@
 /*
 Reloadable, Drag-and-Drop DIVs representing saved Session objects
 by tkbaylis
-
-Based on 'Simple Draggable Element Persistence with jQuery'
-by Dustin Blake, 29 Oct 2009
-http://code.tutsplus.com/tutorials/simple-draggable-element-persistence-with-jquery--net-7474
 */
 
 
@@ -14,8 +10,12 @@ var updatedCoords = [];
 
 /*
  * Retrieve saved sessions and display as draggable boxes
+ *
+ * Based on 'Simple Draggable Element Persistence with jQuery'
+ * by Dustin Blake, 29 Oct 2009
+ * http://code.tutsplus.com/tutorials/simple-draggable-element-persistence-with-jquery--net-7474
 */
-$(document).ready(function () {
+$(function () {
   /* Load sessions as JSON */
   $.getJSON('ajax/_get_sessions', function(data) {
 	for (var i = 0; i < data.length; i++) {
@@ -105,10 +105,14 @@ $(document).ready(function () {
 
 /*
  * Post all changed sessions when button clicked
-*/
-$(document).ready(function () {
+ */
+$(function () {
 	$('.save-changes').click(function () {
     csrftoken = getCookie('csrftoken');  // If csrf token is required for JQuery --> Django
+
+    // var test = JSON.stringify({"updates": updatedCoords});
+    // console.log(test);
+    // console.log(typeof(name));  // string
 
     $.ajax({
       url: "ajax/_post_sessions",
@@ -120,8 +124,31 @@ $(document).ready(function () {
         window.location.href = response.url;
       },
       error: function (response) {
-        console.log('there was error');  // !!! redirect to error page
+        console.log('there was error at save changes');  // !!! redirect to error page
       }
     });
 	});
+});
+
+
+/*
+ * Add new session when submit button clicked (Bootstrap modal)
+ */
+$(function () {
+  $(".add-session").click(function () {
+    csrftoken = getCookie('csrftoken');  // If csrf token is required for JQuery --> Django
+    var name = String($("#name").val());
+    $.ajax({
+      url: "ajax/_add_session",
+			type: "POST",
+			dataType: "json",
+      data: JSON.stringify({"name": name}),
+      success: function (response) {
+        window.location.href = response.url;
+      },
+      error: function (response) {
+        console.log('there was error at add new session');  // !!! redirect to error page
+      }
+    });
+  });
 });
